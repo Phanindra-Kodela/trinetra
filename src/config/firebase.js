@@ -3,7 +3,7 @@ import { getAuth, signInAnonymously } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCl0cl_OVuIJqpqOwVEcBhc_0fQ0lUwnls",
+  apiKey: "YOURAPIKEY", // add your api key here
   authDomain: "trinetra-game.firebaseapp.com",
   projectId: "trinetra-game",
   storageBucket: "trinetra-game.firebasestorage.app",
