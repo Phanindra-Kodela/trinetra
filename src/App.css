@@ -1,0 +1,88 @@
+/* Reset basic margins and ensure full screen height */
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+}
+
+.game-header {
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border-bottom: 2px solid #333;
+}
+
+.game-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #646cff; /* Keeping a bit of that Vite purple/blue */
+}
+
+.game-main {
+  flex: 1; /* This pushes the footer down and takes up available space */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: #242424;
+}
+
+.game-footer {
+  padding: 1rem;
+  background-color: #1a1a1a;
+  border-top: 2px solid #333;
+}
+
+/* =========================================
+   TRINETRA GAMIFIED UI POLISH
+========================================= */
+
+/* Smooth entrance for the main cards */
+.game-card {
+  animation: slideUp 0.4s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Make choice buttons feel tactile */
+.choice-btn {
+  transition: all 0.2s ease;
+}
+.choice-btn:hover {
+  transform: translateX(10px); /* Slides right slightly when hovered */
+  background-color: #333 !important;
+  border-color: #646cff !important;
+  box-shadow: -4px 0 0 #646cff; /* Adds a cool accent bar on the left */
+}
+
+/* Staggered slide-in for the consequence cards */
+.consequence-card {
+  animation: slideUp 0.5s ease-out backwards;
+}
+.consequence-card:nth-child(1) { animation-delay: 0.1s; }
+.consequence-card:nth-child(2) { animation-delay: 0.3s; }
+.consequence-card:nth-child(3) { animation-delay: 0.5s; }
+
+/* Glowing primary button */
+.action-btn {
+  transition: all 0.2s ease;
+}
+.action-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+  box-shadow: 0 0 15px rgba(100, 108, 255, 0.5);
+}
+
+/* Reusable Keyframes */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
