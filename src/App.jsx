@@ -3,7 +3,9 @@ import './App.css'
 import { loginAnonymously } from './config/firebase'
 import HomeScreen from './components/HomeScreen'
 import GameBoard from './components/GameBoard'
-import SummaryScreen from './components/SummaryScreen' // <-- Make sure this is imported!
+import SummaryScreen from './components/SummaryScreen'
+import Cutscene_Level2 from './components/Cutscene_Level2';
+import Cutscene_Level1 from './components/Cutscene_Level1';
 
 function App() {
   const [gameState, setGameState] = useState('idle') 
@@ -16,8 +18,13 @@ function App() {
 
   const startGame = (levelId) => {
     setCurrentLevel(levelId);
-    setGameState('playing');
     setPhaseAScore(0); 
+    
+    if (levelId === 1 || levelId === 2) {
+      setGameState('cutscene');
+    } else {
+      setGameState('playing');
+    }
   }
 
   const resetGame = () => {
@@ -34,9 +41,15 @@ function App() {
         {gameState === 'idle' && (
           <HomeScreen onSelectLevel={startGame} />
         )}
-        
+        {gameState === 'cutscene' && currentLevel === 1 && (
+          <Cutscene_Level1 onComplete={() => setGameState('playing')} />
+        )}
+        {gameState === 'cutscene' && currentLevel === 2 && (
+          <Cutscene_Level2 onComplete={() => setGameState('playing')} />
+        )}
+
         {/* 2. Only show Game Board during gameplay phases */}
-        {(gameState === 'playing' || gameState === 'phaseB') && (
+        {(gameState === 'playing' || gameState === 'phaseB') && (  
           <GameBoard 
             gameState={gameState} 
             setGameState={setGameState} 

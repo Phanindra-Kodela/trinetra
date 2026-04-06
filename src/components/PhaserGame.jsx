@@ -11,7 +11,14 @@ export default function PhaserGame({ scene, onComplete }) {
       parent: 'phaser-container',
       width: 800,
       height: 600,
-      scene: [scene], // Load the dynamic scene here!
+      scene: [scene], // The dynamic scene prop
+      physics: {
+        default: 'arcade',
+        arcade: {
+          gravity: { y: 0 }, // Top-down game, so no gravity!
+          debug: false       // Set to true if you ever want to see hitboxes
+        }
+      },
       scale: {
         mode: Phaser.Scale.FIT,
         autoCenter: Phaser.Scale.CENTER_BOTH
